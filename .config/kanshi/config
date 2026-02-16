@@ -1,0 +1,14 @@
+profile eDP-1-sync_on {
+	output eDP-1 {
+		mode 2880x1800@120Hz
+		position 0,0
+		adaptive_sync on
+	}
+}
+profile eDP-1-sync_off {
+	output eDP-1 {
+		mode 2880x1800@120Hz
+		position 0,0
+		adaptive_sync off
+	}
+}
