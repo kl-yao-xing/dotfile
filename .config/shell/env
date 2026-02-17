@@ -1,0 +1,12 @@
+#!/usr/bin/sh
+
+# PATH
+export PATH="$PATH"":""$HOME""/.local/bin"
+# EDITOR
+export EDITOR=vim
+# Language
+export LANG=zh_CN.UTF-8
+# XDG_CONFIG_HOME
+export XDG_CONFIG_HOME=/home/yaoyao/.config
+# Dircolors
+[ -f ~/.config/dircolors ] && eval "$(dircolors ~/.config/dircolors)"
