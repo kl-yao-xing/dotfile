@@ -77,28 +77,15 @@ EXEC 01;32
 # ===================================================================
 # File extension attributes
 # ===================================================================
-# List any file extensions like '.gz' or '.tar' that you would like ls
-# to color below. Put the suffix, a space, and the color init string.
-# (and any comments you want to add after a '#').
-# Suffixes are matched case insensitively, but if you define different
-# init strings for separate cases, those will be honored.
-#
-# If you use DOS-style suffixes, you may want to uncomment the following:
-#.cmd 01;32 # executables (bright green)
-#.exe 01;32
-#.com 01;32
-#.btm 01;32
-#.bat 01;32
-# Or if you want to color scripts even if they do not have the
-# executable bit actually set.
-#.sh 01;32
-#.csh 01;32
-# archives or compressed (bright red)
-# image formats
-# https://wiki.xiph.org/MIME_Types_and_File_Extensions
-# audio formats
-# https://wiki.xiph.org/MIME_Types_and_File_Extensions
-# backup files
-#
-# Subsequent TERM or COLORTERM entries, can be used to add / override
-# config specific to those matching environment variables.
+# executable files(test:green)
+.exe 32
+.com 32
+.btm 32
+.bat 32
+.sh 32
+.csh 32
+# config files(text:bold magenta)
+*config 01;35
+.conf 01;35
+.ini 01;35
+.zon 01;35
