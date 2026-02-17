@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=lf-foot
+Comment=Launches the lf file manager
+Icon=utilities-terminal
+Terminal=false
+Exec=footclient lf
+Categories=ConsoleOnly;System;FileTools;FileManager
+MimeType=inode/directory;
