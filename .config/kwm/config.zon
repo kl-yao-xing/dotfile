@@ -1,16 +1,36 @@
 .{
     .env = .{
         // .{ "key", "value" },
+        // QT Settings
+        .{ "QT_AUTO_SCREEN_SCALE_FACTOR", "0" },
+        .{ "QT_ENABLE_HIGHDPI_SCALING", "0" },
+        .{ "QT_SCALE_FACTOR", "1.5" },
+        .{ "QT_SCREEN_SCALE_FACTORS", "1.0" },
+        // GDK Settings
+        .{ "GDK_DPI_SCALE", "0.5" },
+        .{ "GDK_SCALE", "2" },
+        // Xwayland
+        .{ "DISPLAY", ":0" },
+        // XDG-DESKTOP-PORTAL
+        .{ "XDG_CURRENT_DESKTOP", "river" },
     },
     .working_directory = .home,
     .startup_cmds = .{
         // .{ "swaybg", "-i", "/path/to/wallpaper" },
+        .{ "dbus-update-activation-environment", "--systemd", "WAYLAND_DISPLAY", "XDG_CURRENT_DESKTOP" },
+        .{ "xwayland-satellite" },
+        .{ "kanshi" },
+        .{ "fcitx5", "-d", "--verbose", "'*=0'" },
+        .{ "lxqt-policykit-agent" },
+        .{ "foot", "--server" },
+        .{ "pass-secret-service" },
+        .{ "clash-verge" },
     },
     .xcursor_theme = null,
     .bar = .{
         .show_default = true,
         .position = .top,
-        .font = "monospace:size=10",
+        .font = "monospace:size=20",
         .color = .{
             .normal = .{
                 .fg = 0x828bb8ff,
@@ -315,8 +335,8 @@
                 },
             },
             .{
-                .keysym = "c",
-                .modifiers = .{ .mod4 = true, .shift = true },
+                .keysym = "q",
+                .modifiers = .{ .mod4 = true },
                 .event = .{
                     .click = .{
                         .pressed = .close,
@@ -776,12 +796,34 @@
             },
 
             .{
-                .keysym = "p",
-                .modifiers = .{ .mod4 = true },
+                .keysym = "space",
+                .modifiers = .{ .mod1 = true },
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn_shell = .{ .cmd = "wmenu-run" },
+                            .spawn_shell = .{ .cmd = "wmenu-run -f 'monospace 20'" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "XF86AudioRaiseVolume",
+                .modifiers = .{ },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "pactl set-sink-volume @DEFAULT_SINK@ +5%" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "XF86AudioLowerVolume",
+                .modifiers = .{ },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "pactl set-sink-volume @DEFAULT_SINK@ -5%" },
                         },
                     },
                 },
@@ -818,7 +860,6 @@
         .{ .app_id = .{ .str = "zenity" }, .floating = true },
         .{ .app_id = .{ .str = "DesktopEditors" }, .floating = true },
         .{ .app_id = .{ .str = "xdg-desktop-portal-gtk" }, .floating = true },
-        .{ .app_id = .{ .str = "chromium" }, .tag = 0b10, .scroller_mfact = 0.9 },
         .{ .app_id = .{ .str = "foot" }, .is_terminal = true, .scroller_mfact = 0.8 },
     },
     .input_device_rules = .{
