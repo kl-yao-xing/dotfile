@@ -1,0 +1,5 @@
+timeout 60 "brightnessctl set 1" resume "brightnessctl -r"
+timeout 300 "waylock -fork-on-lock"
+timeout 310 "wlopm --off eDP-1" resume "wlopm --on eDP-1"
+timeout 3600 "systemctl suspend-then-hibernate"
+before-sleep "waylock -fork-on-lock"
