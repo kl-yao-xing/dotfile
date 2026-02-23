@@ -7,24 +7,26 @@
         .{ "QT_SCALE_FACTOR", "1.5" },
         .{ "QT_SCREEN_SCALE_FACTORS", "1.0" },
         // GDK Settings
-        .{ "GDK_DPI_SCALE", "0.5" },
-        .{ "GDK_SCALE", "2" },
+        .{ "GDK_DPI_SCALE", "1.5" },
         // Xwayland
         .{ "DISPLAY", ":0" },
+        .{ "XMODIFIERS", "@im=fcitx" },
         // XDG-DESKTOP-PORTAL
         .{ "XDG_CURRENT_DESKTOP", "river" },
     },
     .working_directory = .home,
     .startup_cmds = .{
         // .{ "swaybg", "-i", "/path/to/wallpaper" },
+        .{ "status" },
         .{ "dbus-update-activation-environment", "--systemd", "WAYLAND_DISPLAY", "XDG_CURRENT_DESKTOP" },
-        .{ "xwayland-satellite" },
         .{ "kanshi" },
         .{ "fcitx5", "-d", "--verbose", "'*=0'" },
         .{ "lxqt-policykit-agent" },
         .{ "foot", "--server" },
         .{ "pass-secret-service" },
         .{ "clash-verge" },
+        .{ "swaybg", "-i", "/home/yaoyao/Pictures/background/介浩泼水.jpg" },
+        .{ "swayidle", "-C", "/home/yaoyao/.config/sway/swayidle" },
     },
     .xcursor_theme = null,
     .bar = .{
@@ -41,7 +43,7 @@
                 .bg = 0xc8d3f5d0,
             },
         },
-        .status = .{ .text = "kwm" }, // .stdin or .{ .fifo = "fifo file path" }
+        .status = .{ .fifo = "/run/user/1000/status/bar" }, //.{ .text = "kwm" } or .stdin
         // bar clicked callback
         // each part support left/right/middle
         .click = .{
